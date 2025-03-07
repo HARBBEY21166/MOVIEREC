@@ -46,7 +46,7 @@ export function MovieCard({ movie }: MovieCardProps) {
               <span className="text-sm ml-1">{movie.vote_average.toFixed(1)}</span>
             </div>
             <span className="text-sm text-muted-foreground">{year}</span>
-            <AddToFavoritesButton movie={movie} variant="ghost" size="icon" className="h-8 w-8" />
+            <AddToFavoritesButton movie={movie} variant="ghost" size="icon" className="h-8 w-8 ml-9"/>
           </div>
         </CardContent>
       </Link>

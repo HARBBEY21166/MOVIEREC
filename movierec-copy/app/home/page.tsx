@@ -2,12 +2,10 @@
 import Link from "next/link"
 import { TrendingMovies } from "@/components/trending-movies"
 import { RecommendedMovies } from "@/components/recommended-movies"
-import { NavBar } from "@/components/nav-bar"
 
 export default async function Home() {
   return (
     <div className="min-h-screen bg-background">
-      <NavBar />
       <main className="container py-6 md:py-12">
         <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-16">
           <div className="flex max-w-[980px] flex-col items-start gap-2">

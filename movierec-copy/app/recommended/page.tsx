@@ -3,7 +3,6 @@ import Link from "next/link"
 import { type Movie, MovieCard } from "@/components/movie-card"
 import { RecommendedMovies } from "@/components/recommended-movies"
 import { Skeleton } from "@/components/ui/skeleton"
-import { NavBar } from "@/components/nav-bar"
 
 interface MovieResponse {
   page: number
@@ -73,7 +72,7 @@ export default async function TrendingPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <NavBar />
+    
       <main className="container py-8">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold">Recommended Movies</h1>

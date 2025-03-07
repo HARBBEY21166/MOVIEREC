@@ -1,7 +1,7 @@
 "use client"
 
 import { Button, type ButtonProps } from "@/components/ui/button"
-import { useFavorites } from "@/contexts/favorites-context"
+import { useFavorites } from "@/context/favorites-context"
 import type { Movie } from "@/types"
 import { Heart } from "lucide-react"
 import { useEffect, useState } from "react"

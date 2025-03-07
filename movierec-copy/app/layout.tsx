@@ -1,16 +1,17 @@
-/*app/layout.tsx*/
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { AuthProvider } from "@/contexts/auth-context"
-import { ThemeProvider } from "next-themes"
+import Navbar from "@/components/navbar"
+import { Toaster } from "@/components/ui/toaster"
+import { FavoritesProvider } from "@/context/favorites-context"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "MovieRec - Movie Recommendations",
-  description: "Discover your next favorite movie with personalized recommendations",
+  title: "MovieMate - Find Your Next Favorite Film",
+  description: "Discover trending and personalized movie recommendations",
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -19,12 +20,25 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <AuthProvider>{children}</AuthProvider>
-        </ThemeProvider>
+        <FavoritesProvider>
+          <div className="flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <footer className="border-t py-4 text-center text-sm text-muted-foreground">
+              <div className="container">© {new Date().getFullYear()} MovieMate. All rights reserved.</div>
+            </footer>
+          </div>
+          <Toaster />
+        </FavoritesProvider>
       </body>
     </html>
   )
 }
+
+import "./globals.css"
+
+
+
+import './globals.css'
