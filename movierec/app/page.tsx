@@ -1,53 +1,111 @@
-/*app/page.tsx*/
+"use client"
+
+import type React from "react"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { TrendingMovies } from "@/components/trending-movies"
-import { RecommendedMovies } from "@/components/recommended-movies"
-import { NavBar } from "@/components/nav-bar"
+import { useAuth } from "@/contexts/auth-context"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 
-export default async function Home() {
+export default function LoginPage() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const { login } = useAuth()
+  const router = useRouter()
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setError(null)
+    setIsLoading(true)
+
+    try {
+      // First try direct API call to see response
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      })
+
+      if (!response.ok) {
+        const data = await response.json()
+        setError(data.error || "Invalid email or password")
+        setIsLoading(false)
+        return
+      }
+
+      // If direct API call succeeded, use the auth context
+      const success = await login(email, password)
+      if (success) {
+        router.push("/home")
+      } else {
+        setError("Invalid email or password")
+      }
+    } catch (err) {
+      console.error("Login error:", err)
+      setError("An unexpected error occurred")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
-    <div className="min-h-screen bg-background">
-      <NavBar />
-      <main className="container py-6 md:py-12">
-        <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-16">
-          <div className="flex max-w-[980px] flex-col items-start gap-2">
-            <h1 className="text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
-              Discover your next favorite movie
-            </h1>
-            <p className="max-w-[700px] text-lg text-muted-foreground">
-              Personalized movie recommendations based on your taste. Explore trending and popular movies across all
-              genres.
-            </p>
-          </div>
-        </section>
-
-        <section className="space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold tracking-tight">Trending Movies</h2>
-            <Link href="/trending" className="text-sm font-medium hover:underline">
-              View all
+    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle className="text-2xl">Login</CardTitle>
+          <CardDescription>Enter your credentials to access your account</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {error && (
+              <Alert variant="destructive">
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="name@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? "Logging in..." : "Login"}
+            </Button>
+          </form>
+        </CardContent>
+        <CardFooter className="flex justify-center">
+          <p className="text-sm text-muted-foreground">
+            Don&apos;t have an account?{" "}
+            <Link href="/signup" className="text-primary hover:underline">
+              Sign up
             </Link>
-          </div>
-          <TrendingMovies />
-        </section>
-
-        <section className="space-y-6 pt-12">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold tracking-tight">Recommended For You</h2>
-            <Link href="/recommended" className="text-sm font-medium hover:underline">
-              View all
-            </Link>
-          </div>
-          <RecommendedMovies />
-        </section>
-      </main>
-      <footer className="border-t py-6 md:py-0">
-        <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
-          <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-            © 2024 MovieMagic. All rights reserved.
           </p>
-        </div>
-      </footer>
+        </CardFooter>
+      </Card>
     </div>
   )
 }
