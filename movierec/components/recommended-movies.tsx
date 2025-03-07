@@ -21,8 +21,8 @@ export function RecommendedMovies() {
     const fetchRecommendedMovies = async () => {
       try {
         setLoading(true)
-        // Updated API endpoint
-        const response = await fetch("/api/recommended")
+        // Use the same API endpoint as trending movies
+        const response = await fetch("/api/trending")
 
         if (!response.ok) {
           const errorData = await response.json()
@@ -91,4 +91,3 @@ export function RecommendedMovies() {
     </div>
   )
 }
-
