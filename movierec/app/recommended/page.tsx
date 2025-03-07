@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import Link from "next/link"
 import { type Movie, MovieCard } from "@/components/movie-card"
+import { RecommendedMovies } from "@/components/recommended-movies"
 import { Skeleton } from "@/components/ui/skeleton"
 import { NavBar } from "@/components/nav-bar"
 
@@ -11,14 +12,14 @@ interface MovieResponse {
   total_results: number
 }
 
-async function getRecommendedMovies(): Promise<Movie[]> {
+async function getTrendingMovies(): Promise<Movie[]> {
   // Updated API endpoint
-  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || ""}/api/recommended`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || ""}/api/trending`, {
     next: { revalidate: 3600 }, // Cache for 1 hour
   })
 
   if (!res.ok) {
-    throw new Error("Failed to fetch recommended movies")
+    throw new Error("Failed to fetch trending movies")
   }
 
   const data = await res.json()
@@ -59,13 +60,20 @@ function MovieGridSkeleton() {
   )
 }
 
-export default async function RecommendedPage() {
-  const movies = await getRecommendedMovies()
+export default async function TrendingPage() {
+  let movies: Movie[] = [];
+  let errorMessage: string | null = null;
+
+  try {
+    movies = await getTrendingMovies();
+  } catch (error) {
+    console.error("Error fetching trending movies:", error);
+    errorMessage = "Failed to load trending movies. Please try again later.";
+  }
 
   return (
     <div className="min-h-screen bg-background">
       <NavBar />
-
       <main className="container py-8">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold">Recommended Movies</h1>
@@ -73,12 +81,18 @@ export default async function RecommendedPage() {
             Back to Home
           </Link>
         </div>
+        <div>
+        <RecommendedMovies />
+        </div>
 
-        <Suspense fallback={<MovieGridSkeleton />}>
-          <MovieGrid movies={movies} />
-        </Suspense>
+        {errorMessage ? (
+          <div className="text-red-500">{errorMessage}</div>
+        ) : (
+          <Suspense fallback={<MovieGridSkeleton />}>
+            <MovieGrid movies={movies} />
+          </Suspense>
+        )}
       </main>
     </div>
   )
 }
-

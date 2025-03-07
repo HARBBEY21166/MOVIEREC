@@ -1,3 +1,4 @@
+/*app/layout.tsx*/
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
@@ -8,7 +9,7 @@ import { ThemeProvider } from "next-themes"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "MovieMagic - Movie Recommendations",
+  title: "MovieRec - Movie Recommendations",
   description: "Discover your next favorite movie with personalized recommendations",
 }
 

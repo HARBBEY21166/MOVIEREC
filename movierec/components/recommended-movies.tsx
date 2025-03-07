@@ -5,11 +5,14 @@ import { type Movie, MovieCard } from "@/components/movie-card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 
-interface MovieResponse {
-  page: number
-  results: Movie[]
-  total_pages: number
-  total_results: number
+// Function to fetch trending movies
+const getTrendingMovies = async () => {
+  const response = await fetch("/api/trending")
+  if (!response.ok) {
+    throw new Error("Failed to fetch trending movies")
+  }
+  const data = await response.json()
+  return data.results // Return the array of movie objects
 }
 
 export function RecommendedMovies() {
@@ -18,28 +21,12 @@ export function RecommendedMovies() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    const fetchRecommendedMovies = async () => {
+    const fetchTrendingMovies = async () => {
       try {
         setLoading(true)
-        // Use the same API endpoint as trending movies
-        const response = await fetch("/api/trending")
-
-        if (!response.ok) {
-          const errorData = await response.json()
-          throw new Error(errorData.error || "Failed to fetch recommended movies")
-        }
-
-        const data = await response.json()
-
-        // Handle the paginated response format
-        if (data.results && Array.isArray(data.results)) {
-          setMovies(data.results.slice(0, 6)) // Limit to 6 movies for the homepage
-        } else if (Array.isArray(data)) {
-          setMovies(data.slice(0, 6))
-        } else {
-          console.error("Unexpected data format:", data)
-          throw new Error("Received invalid data format from API")
-        }
+        const trendingMovies = await getTrendingMovies()
+        // Slice the trending movies to get a subset for recommendations
+        setMovies(trendingMovies.slice(5, 15)) // Display movies from index 5 to 15
       } catch (err) {
         setError(err instanceof Error ? err.message : "An error occurred")
         console.error("Error fetching recommended movies:", err)
@@ -48,7 +35,7 @@ export function RecommendedMovies() {
       }
     }
 
-    fetchRecommendedMovies()
+    fetchTrendingMovies()
   }, [])
 
   if (error) {
@@ -61,8 +48,8 @@ export function RecommendedMovies() {
 
   if (loading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-        {Array(6)
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        {Array(10)
           .fill(0)
           .map((_, index) => (
             <div key={index} className="space-y-3">
@@ -84,7 +71,7 @@ export function RecommendedMovies() {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
       {movies.map((movie) => (
         <MovieCard key={movie.id} movie={movie} />
       ))}

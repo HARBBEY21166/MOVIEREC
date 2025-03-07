@@ -60,7 +60,7 @@ export function NavBar() {
             </>
           ) : (
             <Button asChild variant="default" size="sm">
-              <Link href="/login">Login</Link>
+              <Link href="/signin">Sign-In</Link>
             </Button>
           )}
         </nav>

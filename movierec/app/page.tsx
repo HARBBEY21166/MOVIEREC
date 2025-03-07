@@ -1,3 +1,4 @@
+/*app/page.tsx*/
 import Link from "next/link"
 import { TrendingMovies } from "@/components/trending-movies"
 import { RecommendedMovies } from "@/components/recommended-movies"

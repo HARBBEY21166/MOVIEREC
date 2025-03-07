@@ -22,8 +22,8 @@ export async function GET() {
     // Just pass through the data as is, let the component handle the format
     return NextResponse.json(data)
   } catch (error) {
-    console.error("Error fetching trending movies:", error)
-    return NextResponse.json({ error: "Failed to fetch trending movies" }, { status: 500 })
-  }
+  console.error("Error fetching trending movies:", error instanceof Error ? error.message : error);
+  return NextResponse.json({ error: "Failed to fetch trending movies" }, { status: 500 });
+}
 }
 

@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import Link from "next/link"
 import { type Movie, MovieCard } from "@/components/movie-card"
+import { TrendingMovies } from "@/components/trending-movies"
 import { Skeleton } from "@/components/ui/skeleton"
 import { NavBar } from "@/components/nav-bar"
 
@@ -60,12 +61,19 @@ function MovieGridSkeleton() {
 }
 
 export default async function TrendingPage() {
-  const movies = await getTrendingMovies()
+  let movies: Movie[] = [];
+  let errorMessage: string | null = null;
+
+  try {
+    movies = await getTrendingMovies();
+  } catch (error) {
+    console.error("Error fetching trending movies:", error);
+    errorMessage = "in later.";
+  }
 
   return (
     <div className="min-h-screen bg-background">
       <NavBar />
-
       <main className="container py-8">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold">Trending Movies</h1>
@@ -73,12 +81,19 @@ export default async function TrendingPage() {
             Back to Home
           </Link>
         </div>
-
-        <Suspense fallback={<MovieGridSkeleton />}>
-          <MovieGrid movies={movies} />
-        </Suspense>
+        <div>
+        <p className="text-muted-foreground mt-1 mb-5">Discover what's popular right now</p>
+         <TrendingMovies />
+        </div>
+        {/* Only show the error message if it exists */}
+        {errorMessage ? (
+          <div className="text-white-10"></div>
+        ) : (
+          <Suspense fallback={<MovieGridSkeleton />}>
+            <MovieGrid movies={movies} />
+          </Suspense>
+        )}
       </main>
     </div>
   )
 }
-
