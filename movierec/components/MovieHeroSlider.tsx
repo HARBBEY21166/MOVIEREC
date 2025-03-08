@@ -23,7 +23,7 @@ const MovieHeroSlider: React.FC = () => {
       rating: "9.2",
       genres: ["Sci-Fi", "Adventure", "Drama"],
       featured: true,
-      image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1600&h=900&auto=format&fit=crop" 
+      image: "https://showbizcafe.com/wp-content/uploads/2014/11/interstellar_movie-wide.jpg" 
     },
     {
       id: 2,
@@ -32,7 +32,7 @@ const MovieHeroSlider: React.FC = () => {
       rating: "9.0",
       genres: ["Action", "Crime", "Drama"],
       featured: true,
-      image: "https://www.imdb.com/title/tt0816692/mediaviewer/rm319290112/?ref_=ext_shr_lnk"
+      image: "https://sm.ign.com/t/ign_za/video/b/batman-ark/batman-arkham-shadow-the-first-preview_v4nc.1200.jpg"
     },
     {
       id: 3,
