@@ -74,7 +74,7 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-red-900 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-#192645 p-4">
       {/* Background elements - ticket stubs pattern */}
       <div className="absolute inset-0 opacity-10 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (
