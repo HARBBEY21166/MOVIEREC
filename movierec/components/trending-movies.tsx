@@ -1,16 +1,17 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { type Movie, MovieCard } from "@/components/movie-card"
+import { MovieCard } from "@/components/movie-card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import type { Movie } from "@/types"
 
-interface MovieResponse {
+/*interface MovieResponse {
   page: number
   results: Movie[]
   total_pages: number
   total_results: number
-}
+}*/
 
 export function TrendingMovies() {
   const [movies, setMovies] = useState<Movie[]>([])
@@ -33,9 +34,9 @@ export function TrendingMovies() {
 
         // Handle the paginated response format
         if (data.results && Array.isArray(data.results)) {
-          setMovies(data.results.slice(0, 6)) // Limit to 6 movies for the homepage
+          setMovies(data.results.slice(0, 24)) // Limit to 6 movies for the homepage
         } else if (Array.isArray(data)) {
-          setMovies(data.slice(0, 6))
+          setMovies(data.slice(0, 24))
         } else {
           console.error("Unexpected data format:", data)
           throw new Error("Received invalid data format from API")

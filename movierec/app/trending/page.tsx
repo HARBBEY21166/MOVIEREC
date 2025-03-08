@@ -1,16 +1,18 @@
 import { Suspense } from "react"
 import Link from "next/link"
-import { type Movie, MovieCard } from "@/components/movie-card"
+import { MovieCard } from "@/components/movie-card"
 import { TrendingMovies } from "@/components/trending-movies"
 import { Skeleton } from "@/components/ui/skeleton"
-import { NavBar } from "@/components/nav-bar"
+import PageWrapper from "@/components/page-wrapper"
+import type { Movie } from "@/types"
 
-interface MovieResponse {
+
+/*interface MovieResponse {
   page: number
   results: Movie[]
   total_pages: number
   total_results: number
-}
+}*/
 
 async function getTrendingMovies(): Promise<Movie[]> {
   // Updated API endpoint
@@ -72,17 +74,17 @@ export default async function TrendingPage() {
   }
 
   return (
+    <PageWrapper>
     <div className="min-h-screen bg-background">
-      <NavBar />
       <main className="container py-8">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold">Trending Movies</h1>
-          <Link href="/" className="text-sm font-medium hover:underline">
+          <Link href="/home" className="text-sm font-medium hover:underline">
             Back to Home
           </Link>
         </div>
         <div>
-        <p className="text-muted-foreground mt-1 mb-5">Discover what's popular right now</p>
+        <p className="text-muted-foreground mt-1 mb-5">Discover whats popular right now</p>
          <TrendingMovies />
         </div>
         {/* Only show the error message if it exists */}
@@ -95,5 +97,6 @@ export default async function TrendingPage() {
         )}
       </main>
     </div>
+    </PageWrapper>
   )
 }

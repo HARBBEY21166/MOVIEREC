@@ -2,8 +2,10 @@ import Link from "next/link"
 import Image from "next/image"
 import { Star } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
+import { AddToFavoritesButton } from "./add-to-favorites-button"
+import type { Movie } from "@/types"
 
-export interface Movie {
+/*export interface Movie {
   id: number
   title: string
   poster_path: string
@@ -11,7 +13,7 @@ export interface Movie {
   release_date: string
   overview: string
   genre_ids: number[]
-}
+}*/
 
 interface MovieCardProps {
   movie: Movie
@@ -44,6 +46,7 @@ export function MovieCard({ movie }: MovieCardProps) {
               <span className="text-sm ml-1">{movie.vote_average.toFixed(1)}</span>
             </div>
             <span className="text-sm text-muted-foreground">{year}</span>
+            <AddToFavoritesButton movie={movie} variant="ghost" size="icon" className="h-8 w-8 ml-9"/>
           </div>
         </CardContent>
       </Link>

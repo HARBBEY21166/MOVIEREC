@@ -23,7 +23,7 @@ export async function POST(request: Request) {
       let errorData
       try {
         errorData = await response.json()
-      } catch (e) {
+      } catch {
         errorData = { detail: "Signup failed" }
       }
       console.error("Signup error response:", errorData)

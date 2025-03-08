@@ -1,33 +1,13 @@
-/*import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
+"use client"
+
 import Navbar from "@/components/navbar"
-import { Toaster } from "@/components/ui/toaster"
-import { FavoritesProvider } from "@/context/favorites-context"
-import { AuthProvider } from "@/contexts/auth-context"
 
-const inter = Inter({ subsets: ["latin"] })
-
-export const metadata: Metadata = {
-  title: "MovieRec - Find Your Next Favorite Film",
-  description: "Discover trending and personalized movie recommendations",
-}
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function PageWrapper({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-      <AuthProvider>
-        <FavoritesProvider>
-          <div className="flex min-h-screen flex-col">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <footer className="border-t border-[#2C3E50] bg-[#0D253F] py-8">
+    <>
+      <Navbar />
+      <main className="flex-1">{children}</main>
+      <footer className="border-t border-[#2C3E50] bg-background py-8">
         <div className="container">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div>
@@ -83,53 +63,6 @@ export default function RootLayout({
           </div>
         </div>
       </footer>
-          </div>
-          <Toaster />
-        </FavoritesProvider>
-        </AuthProvider>
-      </body>
-    </html>
-  )
-}
-
-import "./globals.css"
-
-
-
-import './globals.css'*/
-
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import { Toaster } from "@/components/ui/toaster"
-import { FavoritesProvider } from "@/context/favorites-context"
-import { AuthProvider } from "@/contexts/auth-context"
-
-const inter = Inter({ subsets: ["latin"] })
-
-export const metadata: Metadata = {
-  title: "MovieRec - Find Your Next Favorite Film",
-  description: "Discover trending and personalized movie recommendations",
-}
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <AuthProvider>
-          <FavoritesProvider>
-            <div className="flex min-h-screen flex-col">
-              {children}
-            </div>
-            <Toaster />
-          </FavoritesProvider>
-        </AuthProvider>
-      </body>
-    </html>
+    </>
   )
 }

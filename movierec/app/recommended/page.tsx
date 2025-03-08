@@ -1,16 +1,17 @@
 import { Suspense } from "react"
 import Link from "next/link"
-import { type Movie, MovieCard } from "@/components/movie-card"
+import { MovieCard } from "@/components/movie-card"
 import { RecommendedMovies } from "@/components/recommended-movies"
 import { Skeleton } from "@/components/ui/skeleton"
-import { NavBar } from "@/components/nav-bar"
+import PageWrapper from "@/components/page-wrapper"
+import type { Movie } from "@/types"
 
-interface MovieResponse {
+/*interface MovieResponse {
   page: number
   results: Movie[]
   total_pages: number
   total_results: number
-}
+}*/
 
 async function getTrendingMovies(): Promise<Movie[]> {
   // Updated API endpoint
@@ -72,8 +73,9 @@ export default async function TrendingPage() {
   }
 
   return (
+    <PageWrapper>
     <div className="min-h-screen bg-background">
-      <NavBar />
+    
       <main className="container py-8">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold">Recommended Movies</h1>
@@ -95,5 +97,6 @@ export default async function TrendingPage() {
         )}
       </main>
     </div>
+    </PageWrapper>
   )
 }
