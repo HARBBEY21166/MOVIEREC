@@ -233,7 +233,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Film, Play } from "lucide-react"
+import { Film, Ticket } from "lucide-react"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
@@ -281,28 +281,47 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black to-gray-900 p-4">
-      <div className="absolute inset-0 opacity-20 bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center pointer-events-none" />
-      
-      <Card className="w-full max-w-md border-0 shadow-2xl bg-black/80 backdrop-blur-md text-white">
-        <CardHeader className="space-y-1 items-center text-center pb-2">
-          <div className="w-16 h-16 mx-auto mb-2 bg-red-600 rounded-full flex items-center justify-center">
-            <Film size={32} />
+    <div className="min-h-screen flex items-center justify-center bg-blue-900 p-4">
+      {/* Background elements - ticket stubs pattern */}
+      <div className="absolute inset-0 opacity-10 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div 
+            key={i}
+            className="absolute transform rotate-12"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+          >
+            <Ticket size={64} className="text-yellow-400" />
           </div>
-          <CardTitle className="text-3xl font-bold text-red-500">MovieRec</CardTitle>
-          <CardDescription className="text-gray-400">Sign in to continue your cinematic journey</CardDescription>
+        ))}
+      </div>
+      
+      <Card className="w-full max-w-md border-4 border-yellow-400 shadow-2xl bg-white">
+        <div className="bg-blue-800 py-6 px-4 text-center rounded-t-sm">
+          <div className="w-16 h-16 mx-auto mb-2 bg-yellow-400 rounded-full flex items-center justify-center">
+            <Film size={32} className="text-blue-800" />
+          </div>
+          <h1 className="text-3xl font-black text-yellow-400 tracking-wide uppercase">MovieRec</h1>
+          <p className="text-yellow-200 text-sm font-medium mt-1">Your personal movie recommendation system</p>
+        </div>
+        
+        <CardHeader className="pt-6">
+          <CardTitle className="text-2xl text-blue-800 font-bold">Welcome Back</CardTitle>
+          <CardDescription className="text-blue-600">Sign in to discover your next favorite movie</CardDescription>
         </CardHeader>
         
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             {error && (
-              <Alert variant="destructive" className="bg-red-900/50 border border-red-500 text-white">
+              <Alert variant="destructive" className="bg-red-50 border-red-400 text-red-800">
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             )}
             
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-gray-300">Email</Label>
+              <Label htmlFor="email" className="text-blue-800">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -310,42 +329,37 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-red-500 focus:ring-red-500"
+                className="border-blue-300 focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-gray-300">Password</Label>
+              <Label htmlFor="password" className="text-blue-800">Password</Label>
               <Input
                 id="password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-red-500 focus:ring-red-500"
+                className="border-blue-300 focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
             
             <Button 
               type="submit" 
-              className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded flex items-center justify-center gap-2 transition-all"
+              className="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-2 px-4" 
               disabled={isLoading}
             >
-              {isLoading ? "Logging in..." : (
-                <>
-                  <Play size={16} fill="currentColor" /> 
-                  Start Watching
-                </>
-              )}
+              {isLoading ? "Logging in..." : "Access My Account"}
             </Button>
           </form>
         </CardContent>
         
-        <CardFooter className="flex justify-center border-t border-gray-800 pt-4">
-          <p className="text-sm text-gray-400">
-            New to MovieRec?{" "}
-            <Link href="/signup" className="text-red-500 hover:text-red-400 font-medium hover:underline">
-              Create an account
+        <CardFooter className="flex justify-center border-t border-blue-100 pt-4">
+          <p className="text-sm text-blue-700">
+            Don't have an account?{" "}
+            <Link href="/signup" className="text-blue-600 font-bold hover:text-yellow-600 hover:underline">
+              Sign up
             </Link>
           </p>
         </CardFooter>
