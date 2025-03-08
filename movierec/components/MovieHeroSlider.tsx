@@ -14,7 +14,7 @@ interface Movie {
 }
 
 const MovieHeroSlider: React.FC = () => {
-  // Sample movie data
+  // Sample movie data with direct image URLs
   const movies: Movie[] = [
     {
       id: 1,
@@ -23,7 +23,7 @@ const MovieHeroSlider: React.FC = () => {
       rating: "9.2",
       genres: ["Sci-Fi", "Adventure", "Drama"],
       featured: true,
-      image: "/api/placeholder/1600/900" // In a real app, use actual image paths
+      image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1600&h=900&auto=format&fit=crop" 
     },
     {
       id: 2,
@@ -32,7 +32,7 @@ const MovieHeroSlider: React.FC = () => {
       rating: "9.0",
       genres: ["Action", "Crime", "Drama"],
       featured: true,
-      image: "https://pin.it/4DoUK6yY6"
+      image: "https://pin.it/7J62Jv3Qe=1600&h=900&auto=format&fit=crop"
     },
     {
       id: 3,
@@ -41,7 +41,7 @@ const MovieHeroSlider: React.FC = () => {
       rating: "8.8",
       genres: ["Action", "Adventure", "Sci-Fi"],
       featured: true,
-      image: "/api/placeholder/1600/900"
+      image: "https://pin.it/7J62Jv3Qe"
     },
     {
       id: 4,
@@ -50,7 +50,7 @@ const MovieHeroSlider: React.FC = () => {
       rating: "8.9",
       genres: ["Crime", "Drama"],
       featured: true,
-      image: "/api/placeholder/1600/900"
+      image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1600&h=900&auto=format&fit=crop"
     }
   ];
 
