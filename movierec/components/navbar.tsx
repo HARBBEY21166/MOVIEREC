@@ -38,13 +38,13 @@ export default function Navbar() {
   ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-blue-700 bg-blue-800 text-white backdrop-blur supports-[backdrop-filter]:bg-blue-800/95">
+    <header className="sticky top-0 z-50 w-full border-b border-gray-700 bg-[#0F172A] text-white backdrop-blur supports-[backdrop-filter]:bg-[#0F172A]/95">
       <div className="container flex h-16 items-center">
         <Link href="/home" className="mr-6 flex items-center space-x-2">
-          <div className="h-8 w-8 rounded-full bg-yellow-400 flex items-center justify-center">
-            <Film className="h-5 w-5 text-blue-800" />
+          <div className="h-8 w-8 rounded-full bg-[#facc15] flex items-center justify-center">
+            <Film className="h-5 w-5 text-[#0F172A]" />
           </div>
-          <span className="font-black text-2xl uppercase tracking-wide text-yellow-400">MovieRec</span>
+          <span className="font-black text-2xl uppercase tracking-wide text-[#facc15]">MovieRec</span>
         </Link>
 
         <div className="hidden md:flex items-center space-x-1">
@@ -54,8 +54,8 @@ export default function Navbar() {
                 variant={pathname === link.href ? "secondary" : "ghost"} 
                 className={`text-sm flex items-center ${
                   pathname === link.href 
-                    ? "bg-yellow-400 text-blue-900 hover:bg-yellow-500 hover:text-blue-900" 
-                    : "text-white hover:bg-blue-700 hover:text-yellow-400"
+                    ? "bg-[#facc15] text-[#0F172A] hover:bg-[#fbbf24] hover:text-[#0F172A]" 
+                    : "text-white hover:bg-[#1e293b] hover:text-[#facc15]"
                 }`}
               >
                 {link.icon}
@@ -70,11 +70,11 @@ export default function Navbar() {
             <Button 
               variant="ghost" 
               size="icon" 
-              className="relative text-white hover:bg-blue-700 hover:text-yellow-400"
+              className="relative text-white hover:bg-[#1e293b] hover:text-[#facc15]"
             >
               <Heart className="h-5 w-5" />
               {favorites.length > 0 && (
-                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-yellow-400 text-[10px] text-blue-900 font-bold">
+                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#facc15] text-[10px] text-[#0F172A] font-bold">
                   {favorites.length}
                 </span>
               )}
@@ -85,7 +85,7 @@ export default function Navbar() {
             <Button 
               variant="ghost" 
               size="icon"
-              className="text-white hover:bg-blue-700 hover:text-yellow-400"
+              className="text-white hover:bg-[#1e293b] hover:text-[#facc15]"
             >
               <Search className="h-5 w-5" />
               <span className="sr-only">Search</span>
@@ -96,7 +96,7 @@ export default function Navbar() {
             variant="ghost" 
             size="icon" 
             onClick={toggleDarkMode}
-            className="text-white hover:bg-blue-700 hover:text-yellow-400"
+            className="text-white hover:bg-[#1e293b] hover:text-[#facc15]"
           >
             {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             <span className="sr-only">Toggle theme</span>
@@ -107,18 +107,18 @@ export default function Navbar() {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="md:hidden text-white hover:bg-blue-700 hover:text-yellow-400"
+                className="md:hidden text-white hover:bg-[#1e293b] hover:text-[#facc15]"
               >
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="border-l-4 border-yellow-400 bg-blue-800 text-white">
+            <SheetContent side="right" className="border-l-4 border-[#facc15] bg-[#0F172A] text-white">
               <div className="flex items-center space-x-2 mb-8 mt-4">
-                <div className="h-8 w-8 rounded-full bg-yellow-400 flex items-center justify-center">
-                  <Film className="h-5 w-5 text-blue-800" />
+                <div className="h-8 w-8 rounded-full bg-[#facc15] flex items-center justify-center">
+                  <Film className="h-5 w-5 text-[#0F172A]" />
                 </div>
-                <span className="font-black text-xl uppercase tracking-wide text-yellow-400">MovieRec</span>
+                <span className="font-black text-xl uppercase tracking-wide text-[#facc15]">MovieRec</span>
               </div>
               <nav className="flex flex-col gap-4">
                 {navLinks.map((link) => (
@@ -127,8 +127,8 @@ export default function Navbar() {
                       variant={pathname === link.href ? "secondary" : "ghost"} 
                       className={`w-full justify-start ${
                         pathname === link.href 
-                          ? "bg-yellow-400 text-blue-900 hover:bg-yellow-500" 
-                          : "text-white hover:bg-blue-700 hover:text-yellow-400"
+                          ? "bg-[#facc15] text-[#0F172A] hover:bg-[#fbbf24]" 
+                          : "text-white hover:bg-[#1e293b] hover:text-[#facc15]"
                       }`}
                     >
                       {link.icon}
@@ -136,11 +136,11 @@ export default function Navbar() {
                     </Button>
                   </Link>
                 ))}
-                <hr className="border-blue-700 my-2" />
+                <hr className="border-gray-700 my-2" />
                 <Link href="/">
                   <Button 
                     variant="ghost" 
-                    className="w-full justify-start text-white hover:bg-blue-700 hover:text-yellow-400"
+                    className="w-full justify-start text-white hover:bg-[#1e293b] hover:text-[#facc15]"
                   >
                     <User className="h-4 w-4 mr-2" />
                     Sign Out
@@ -155,17 +155,17 @@ export default function Navbar() {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="rounded-full text-white hover:bg-blue-700 hover:text-yellow-400"
+                className="rounded-full text-white hover:bg-[#1e293b] hover:text-[#facc15]"
               >
                 <User className="h-5 w-5" />
                 <span className="sr-only">User menu</span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="border-2 border-yellow-400 bg-blue-800 text-white">
-              <DropdownMenuItem disabled className="text-gray-300">
+            <DropdownMenuContent align="end" className="border-2 border-[#facc15] bg-[#0F172A] text-white">
+              <DropdownMenuItem disabled className="text-gray-400">
                 <span>Guest</span>
               </DropdownMenuItem>
-              <DropdownMenuItem className="hover:bg-blue-700 hover:text-yellow-400 cursor-pointer">
+              <DropdownMenuItem className="hover:bg-[#1e293b] hover:text-[#facc15] cursor-pointer">
                 <Link href="/" className="flex w-full">
                   Sign Out
                 </Link>
