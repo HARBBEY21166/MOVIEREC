@@ -1,16 +1,17 @@
 import { Suspense } from "react"
 import Link from "next/link"
-import { type Movie, MovieCard } from "@/components/movie-card"
+import { MovieCard } from "@/components/movie-card"
 import { RecommendedMovies } from "@/components/recommended-movies"
 import { Skeleton } from "@/components/ui/skeleton"
 import PageWrapper from "@/components/page-wrapper"
+import type { Movie } from "@/types"
 
-interface MovieResponse {
+/*interface MovieResponse {
   page: number
   results: Movie[]
   total_pages: number
   total_results: number
-}
+}*/
 
 async function getTrendingMovies(): Promise<Movie[]> {
   // Updated API endpoint

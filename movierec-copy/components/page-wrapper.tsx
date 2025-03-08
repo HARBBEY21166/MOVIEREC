@@ -7,7 +7,7 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
     <>
       <Navbar />
       <main className="flex-1">{children}</main>
-      <footer className="border-t border-[#2C3E50] bg-[#0D253F] py-8">
+      <footer className="border-t border-[#2C3E50] bg-background py-8">
         <div className="container">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div>

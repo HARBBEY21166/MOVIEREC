@@ -1,16 +1,18 @@
 import { Suspense } from "react"
 import Link from "next/link"
-import { type Movie, MovieCard } from "@/components/movie-card"
+import { MovieCard } from "@/components/movie-card"
 import { TrendingMovies } from "@/components/trending-movies"
 import { Skeleton } from "@/components/ui/skeleton"
 import PageWrapper from "@/components/page-wrapper"
+import type { Movie } from "@/types"
 
-interface MovieResponse {
+
+/*interface MovieResponse {
   page: number
   results: Movie[]
   total_pages: number
   total_results: number
-}
+}*/
 
 async function getTrendingMovies(): Promise<Movie[]> {
   // Updated API endpoint
@@ -82,7 +84,7 @@ export default async function TrendingPage() {
           </Link>
         </div>
         <div>
-        <p className="text-muted-foreground mt-1 mb-5">Discover what's popular right now</p>
+        <p className="text-muted-foreground mt-1 mb-5">Discover whats popular right now</p>
          <TrendingMovies />
         </div>
         {/* Only show the error message if it exists */}

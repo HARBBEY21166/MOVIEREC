@@ -1,63 +1,56 @@
-/*app/page.tsx*/
-import Link from "next/link"
-import { TrendingMovies } from "@/components/trending-movies"
-import { RecommendedMovies } from "@/components/recommended-movies"
+import { MovieGrid } from "@/components/movie-grid"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { getTrendingMovies } from "@/lib/api"
+import { Search } from "lucide-react"
+import MovieHeroSlider from '@/components/MovieHeroSlider';
 import PageWrapper from "@/components/page-wrapper"
 
-export default async function Home() {
+export default async function MoviesPage() {
+  const movies = await getTrendingMovies()
+
   return (
     <PageWrapper>
-    <div className="min-h-screen bg-[#0D253F] text-[#F5F5F5]">
+    <div className="container py-6 space-y-6">
+         <MovieHeroSlider />
+      <h1 className="text-3xl font-bold tracking-tight">Browse Movies</h1>
 
-      <main className="container py-6 md:py-12">
-        <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-16">
-          <div className="flex max-w-[980px] flex-col items-start gap-4">
-            <span className="rounded-full bg-[#E50914] px-3 py-1 text-xs font-medium uppercase text-white">Premium</span>
-            <h1 className="text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
-              Discover your next <span className="text-[#FFD700]">favorite</span> movie
-            </h1>
-            <p className="max-w-[700px] text-lg text-[#C0C0C0]">
-              Personalized movie recommendations based on your taste. Explore trending and popular movies across all
-              genres.
-            </p>
-            <div className="mt-4 flex gap-4">
-              <button className="rounded bg-[#E50914] px-6 py-3 font-medium text-white hover:bg-opacity-90">
-                Get Started
-              </button>
-              <button className="rounded border border-[#708090] px-6 py-3 font-medium text-[#F5F5F5] hover:border-[#FFD700] hover:text-[#FFD700]">
-                Browse Movies
-              </button>
-            </div>
-          </div>
-        </section>
+      <div className="flex flex-col sm:flex-row gap-4">
+        <div className="relative flex-1">
+          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+          <Input type="search" placeholder="Search movies..." className="pl-8" />
+        </div>
+        <Select defaultValue="popularity">
+          <SelectTrigger className="w-full sm:w-[180px]">
+            <SelectValue placeholder="Sort by" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="popularity">Popularity</SelectItem>
+            <SelectItem value="rating">Rating</SelectItem>
+            <SelectItem value="release">Release Date</SelectItem>
+          </SelectContent>
+        </Select>
+        <Select defaultValue="all">
+          <SelectTrigger className="w-full sm:w-[180px]">
+            <SelectValue placeholder="Genre" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Genres</SelectItem>
+            <SelectItem value="action">Action</SelectItem>
+            <SelectItem value="comedy">Comedy</SelectItem>
+            <SelectItem value="drama">Drama</SelectItem>
+            <SelectItem value="horror">Horror</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
 
-        <section className="space-y-6 rounded-lg bg-[#2C3E50] p-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="h-4 w-1 bg-[#E50914]"></div>
-              <h2 className="text-2xl font-bold tracking-tight">Trending Movies</h2>
-            </div>
-            <Link href="/trending" className="text-sm font-medium text-[#708090] hover:text-[#FFD700] hover:underline">
-              View all
-            </Link>
-          </div>
-          <TrendingMovies />
-        </section>
+      <MovieGrid movies={movies} />
 
-        <section className="space-y-6 rounded-lg bg-[#2C3E50] mt-8 p-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="h-4 w-1 bg-[#FFD700]"></div>
-              <h2 className="text-2xl font-bold tracking-tight">Recommended For You</h2>
-            </div>
-            <Link href="/recommended" className="text-sm font-medium text-[#708090] hover:text-[#FFD700] hover:underline">
-              View all
-            </Link>
-          </div>
-          <RecommendedMovies />
-        </section>
-
-        <section className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+      <div className="flex justify-center">
+        <Button variant="outline">Load More</Button>
+      </div>
+      <section className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
           <div className="rounded-lg border border-[#2C3E50] bg-gradient-to-b from-[#0D253F] to-[#2C3E50] p-6">
             <div className="mb-4 rounded-full bg-[#0D253F] p-3 w-12 h-12 flex items-center justify-center">
               <svg viewBox="0 0 24 24" className="h-6 w-6 fill-[#FFD700]">
@@ -86,8 +79,8 @@ export default async function Home() {
             <p className="text-[#C0C0C0]">Stay updated with the latest movies hitting theaters and streaming platforms.</p>
           </div>
         </section>
-      </main>
     </div>
     </PageWrapper>
-  )
+   )
 }
+

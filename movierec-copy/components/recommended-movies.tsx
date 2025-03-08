@@ -1,9 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { type Movie, MovieCard } from "@/components/movie-card"
+import { MovieCard } from "@/components/movie-card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import type { Movie } from "@/types"
 
 // Function to fetch trending movies
 const getTrendingMovies = async () => {
@@ -26,7 +27,7 @@ export function RecommendedMovies() {
         setLoading(true)
         const trendingMovies = await getTrendingMovies()
         // Slice the trending movies to get a subset for recommendations
-        setMovies(trendingMovies.slice(5, 15)) // Display movies from index 5 to 15
+        setMovies(trendingMovies.slice(7, 20)) // Display movies from index 5 to 15
       } catch (err) {
         setError(err instanceof Error ? err.message : "An error occurred")
         console.error("Error fetching recommended movies:", err)

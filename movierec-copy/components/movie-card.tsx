@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { AddToFavoritesButton } from "./add-to-favorites-button"
 import type { Movie } from "@/types"
 
-export interface Movie {
+/*export interface Movie {
   id: number
   title: string
   poster_path: string
@@ -13,7 +13,7 @@ export interface Movie {
   release_date: string
   overview: string
   genre_ids: number[]
-}
+}*/
 
 interface MovieCardProps {
   movie: Movie
