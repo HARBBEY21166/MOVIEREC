@@ -18,6 +18,15 @@ const MovieHeroSlider: React.FC = () => {
   const movies: Movie[] = [
     {
       id: 1,
+      title: "Naruto",
+      description: "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+      rating: "8.9",
+      genres: ["Crime", "Drama"],
+      featured: true,
+      image: "https://m.media-amazon.com/images/S/pv-target-images/37ae6eaf1e35049384801438c20a4dec3aa06593542c9770c83935d6b84a3e59._SX1080_FMjpg_.jpg"
+    },
+    {
+      id: 2,
       title: "Interstellar",
       description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
       rating: "9.2",
@@ -26,7 +35,7 @@ const MovieHeroSlider: React.FC = () => {
       image: "https://showbizcafe.com/wp-content/uploads/2014/11/interstellar_movie-wide.jpg" 
     },
     {
-      id: 2,
+      id: 3,
       title: "The Dark Knight",
       description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
       rating: "9.0",
@@ -35,22 +44,13 @@ const MovieHeroSlider: React.FC = () => {
       image: "https://sm.ign.com/t/ign_za/video/b/batman-ark/batman-arkham-shadow-the-first-preview_v4nc.1200.jpg"
     },
     {
-      id: 3,
+      id: 4,
       title: "Inception",
       description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
       rating: "8.8",
       genres: ["Action", "Adventure", "Sci-Fi"],
       featured: true,
-      image: "https://www.imdb.com/title/tt0816692/mediaviewer/rm369621760/?ref_=ext_shr_lnk=80&w=1600&h=900&auto=format&fit=crop"
-    },
-    {
-      id: 4,
-      title: "Pulp Fiction",
-      description: "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
-      rating: "8.9",
-      genres: ["Crime", "Drama"],
-      featured: true,
-      image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1600&h=900&auto=format&fit=crop"
+      image: "https://images.bauerhosting.com/legacy/empire-tmdb/films/27205/images/s2bT29y0ngXxxu2IA8AOzzXTRhd.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=768&q=80"
     }
   ];
 
@@ -143,7 +143,7 @@ const MovieHeroSlider: React.FC = () => {
               <div className="max-w-lg">
                 <div className="flex items-center gap-2 mb-3">
                   {currentMovie.featured && (
-                    <span className="rounded-full bg-[#E50914] px-3 py-1 text-xs font-medium uppercase text-white">
+                    <span className="rounded-full bg-[#facc15] px-3 py-1 text-xs font-medium uppercase text-white">
                       Featured
                     </span>
                   )}
@@ -168,7 +168,7 @@ const MovieHeroSlider: React.FC = () => {
                   {currentMovie.description}
                 </p>
                 <div className="flex gap-4">
-                  <button className="flex items-center gap-2 rounded bg-[#E50914] px-6 py-3 font-medium text-white hover:bg-opacity-90">
+                  <button className="flex items-center gap-2 rounded bg-[#facc15] px-6 py-3 font-medium text-white hover:bg-opacity-90">
                     <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
                       <path d="M8 5v14l11-7z" />
                     </svg>
@@ -213,7 +213,7 @@ const MovieHeroSlider: React.FC = () => {
                   onClick={() => goToSlide(index)}
                   className={`h-2 rounded-full cursor-pointer ${
                     index === currentIndex 
-                      ? "w-6 bg-[#E50914]" 
+                      ? "w-6 bg-[#facc15]" 
                       : "w-2 bg-[#C0C0C0] hover:bg-[#E50914]/50"
                   }`}
                   role="button"
