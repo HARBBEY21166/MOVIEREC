@@ -289,7 +289,7 @@ export default function LoginPage() {
           <div className="w-16 h-16 mx-auto mb-2 bg-red-600 rounded-full flex items-center justify-center">
             <Film size={32} />
           </div>
-          <CardTitle className="text-3xl font-bold text-red-500">MovieVerse</CardTitle>
+          <CardTitle className="text-3xl font-bold text-red-500">MovieRec</CardTitle>
           <CardDescription className="text-gray-400">Sign in to continue your cinematic journey</CardDescription>
         </CardHeader>
         
@@ -343,7 +343,7 @@ export default function LoginPage() {
         
         <CardFooter className="flex justify-center border-t border-gray-800 pt-4">
           <p className="text-sm text-gray-400">
-            New to MovieVerse?{" "}
+            New to MovieRec?{" "}
             <Link href="/signup" className="text-red-500 hover:text-red-400 font-medium hover:underline">
               Create an account
             </Link>
