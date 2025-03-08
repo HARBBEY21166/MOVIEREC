@@ -75,7 +75,7 @@ export default async function TrendingPage() {
       <main className="container py-8">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold">Trending Movies</h1>
-          <Link href="/" className="text-sm font-medium hover:underline">
+          <Link href="/home" className="text-sm font-medium hover:underline">
             Back to Home
           </Link>
         </div>
