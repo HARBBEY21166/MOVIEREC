@@ -32,7 +32,7 @@ const MovieHeroSlider: React.FC = () => {
       rating: "9.0",
       genres: ["Action", "Crime", "Drama"],
       featured: true,
-      image: "https://pin.it/7J62Jv3Qe=1600&h=900&auto=format&fit=crop"
+      image: "https://www.imdb.com/title/tt0816692/mediaviewer/rm319290112/?ref_=ext_shr_lnk"
     },
     {
       id: 3,
@@ -41,7 +41,7 @@ const MovieHeroSlider: React.FC = () => {
       rating: "8.8",
       genres: ["Action", "Adventure", "Sci-Fi"],
       featured: true,
-      image: "https://pin.it/7J62Jv3Qe"
+      image: "https://www.imdb.com/title/tt0816692/mediaviewer/rm369621760/?ref_=ext_shr_lnk=80&w=1600&h=900&auto=format&fit=crop"
     },
     {
       id: 4,
