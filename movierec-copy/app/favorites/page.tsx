@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { useFavorites } from "@/context/favorites-context"
 import { Trash2 } from "lucide-react"
 import { useEffect, useState } from "react"
+import PageWrapper from "@/components/page-wrapper"
 
 export default function FavoritesPage() {
   const { favorites, clearFavorites } = useFavorites()
@@ -24,6 +25,7 @@ export default function FavoritesPage() {
   }
 
   return (
+    <PageWrapper>
     <div className="container py-6 space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold tracking-tight">My Favorites</h1>
@@ -47,6 +49,7 @@ export default function FavoritesPage() {
         </div>
       )}
     </div>
+    </PageWrapper>
   )
 }
 

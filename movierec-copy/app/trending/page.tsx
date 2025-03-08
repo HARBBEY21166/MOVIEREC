@@ -3,6 +3,7 @@ import Link from "next/link"
 import { type Movie, MovieCard } from "@/components/movie-card"
 import { TrendingMovies } from "@/components/trending-movies"
 import { Skeleton } from "@/components/ui/skeleton"
+import PageWrapper from "@/components/page-wrapper"
 
 interface MovieResponse {
   page: number
@@ -71,6 +72,7 @@ export default async function TrendingPage() {
   }
 
   return (
+    <PageWrapper>
     <div className="min-h-screen bg-background">
       <main className="container py-8">
         <div className="flex items-center justify-between mb-8">
@@ -93,5 +95,6 @@ export default async function TrendingPage() {
         )}
       </main>
     </div>
+    </PageWrapper>
   )
 }

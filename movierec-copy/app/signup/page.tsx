@@ -29,7 +29,7 @@ export default function SignupPage() {
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => {
-        router.push("/login")
+        router.push("/")
       }, 3000) // Redirect after 3 seconds
 
       return () => clearTimeout(timer)
@@ -40,36 +40,23 @@ export default function SignupPage() {
     e.preventDefault()
     setError(null)
     setSuccess(false)
-
+  
     if (password !== confirmPassword) {
       setError("Passwords do not match")
       return
     }
-
+  
     setIsLoading(true)
-
+  
     try {
-      // Call the API directly
-      const response = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          first_name: firstName,
-          last_name: lastName,
-          password,
-        }),
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        setError(data.error || "Failed to create account")
+      // Use the signup function from the auth context
+      const isSuccessful = await signup(firstName, lastName, email, password)
+  
+      if (!isSuccessful) {
+        setError("Failed to create account")
         return
       }
-
+  
       // Show success message
       setSuccess(true)
       // Clear form

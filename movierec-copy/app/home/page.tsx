@@ -2,9 +2,11 @@
 import Link from "next/link"
 import { TrendingMovies } from "@/components/trending-movies"
 import { RecommendedMovies } from "@/components/recommended-movies"
+import PageWrapper from "@/components/page-wrapper"
 
 export default async function Home() {
   return (
+    <PageWrapper>
     <div className="min-h-screen bg-[#0D253F] text-[#F5F5F5]">
 
       <main className="container py-6 md:py-12">
@@ -86,5 +88,6 @@ export default async function Home() {
         </section>
       </main>
     </div>
+    </PageWrapper>
   )
 }

@@ -5,11 +5,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { getTrendingMovies } from "@/lib/api"
 import { Search } from "lucide-react"
 import MovieHeroSlider from '@/components/MovieHeroSlider';
+import PageWrapper from "@/components/page-wrapper"
 
 export default async function MoviesPage() {
   const movies = await getTrendingMovies()
 
   return (
+    <PageWrapper>
     <div className="container py-6 space-y-6">
          <MovieHeroSlider />
       <h1 className="text-3xl font-bold tracking-tight">Browse Movies</h1>
@@ -49,6 +51,7 @@ export default async function MoviesPage() {
         <Button variant="outline">Load More</Button>
       </div>
     </div>
-  )
+    </PageWrapper>
+   )
 }
 
