@@ -10,14 +10,12 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { SuccessAlert, SuccessAlertDescription, SuccessAlertTitle } from "@/components/ui/success-alert"
 import { Film, Ticket } from "lucide-react"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState<boolean>(false) // New state for success alert
   const [isLoading, setIsLoading] = useState(false)
   const { login } = useAuth()
   const router = useRouter()
@@ -25,7 +23,6 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError(null)
-    setSuccess(false) // Reset success state on form submission
     setIsLoading(true)
 
     try {
@@ -48,7 +45,6 @@ export default function LoginPage() {
       // If direct API call succeeded, use the auth context
       const success = await login(email, password)
       if (success) {
-        setSuccess(true) // Set success state to true
         router.push("/home")
       } else {
         setError("Invalid email or password")
@@ -94,15 +90,7 @@ export default function LoginPage() {
         </CardHeader>
         
         <CardContent>
-          {success && (
-            <SuccessAlert className="mb-4 bg-[#0F172A] border-[#0F172A] text-[#facc15]">
-              <SuccessAlertTitle>Login successful!</SuccessAlertTitle>
-              <SuccessAlertDescription>
-                Welcome back! You will be redirected shortly.
-              </SuccessAlertDescription>
-            </SuccessAlert>
-          )}
-                   <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             {error && (
               <Alert variant="destructive" className="bg-red-50 border-red-400 text-red-800">
                 <AlertDescription>{error}</AlertDescription>
@@ -120,7 +108,7 @@ export default function LoginPage() {
                 required
                 className="border-gray-700 focus:border-gray-700 focus:ring-gray-700"
               />
-            </div>
+                        </div>
             
             <div className="space-y-2">
               <Label htmlFor="password" className="text-[#0F172A]">Password</Label>
