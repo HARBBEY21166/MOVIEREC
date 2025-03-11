@@ -75,18 +75,18 @@ export default function LoginPage() {
         ))}
       </div>
       
-      <Card className="w-full max-w-md border-4 bg-[#0F172A] shadow-2xl bg-white">
+      <Card className="w-full max-w-md border-4 bg-[#facc15] shadow-2xl bg-white">
         <div className="bg-blue-800 py-6 px-4 text-center rounded-t-sm">
           <div className="w-16 h-16 mx-auto mb-2 bg-yellow-400 rounded-full flex items-center justify-center">
             <Film size={32} className="text-blue-800" />
           </div>
-          <h1 className="text-3xl font-black text-yellow-400 tracking-wide uppercase">MovieRec</h1>
+          <h1 className="text-3xl font-black text-[#facc15] tracking-wide uppercase">MovieRec</h1>
           <p className="text-yellow-200 text-sm font-medium mt-1">Your personal movie recommendation system</p>
         </div>
         
         <CardHeader className="pt-6">
-          <CardTitle className="text-2xl text-blue-800 font-bold">Welcome Back</CardTitle>
-          <CardDescription className="text-blue-600">Sign in to discover your next favorite movie</CardDescription>
+          <CardTitle className="text-2xl text-[#0F172A] font-bold">Welcome Back</CardTitle>
+          <CardDescription className="text-[#0F172A]">Sign in to discover your next favorite movie</CardDescription>
         </CardHeader>
         
         <CardContent>
@@ -98,7 +98,7 @@ export default function LoginPage() {
             )}
             
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-blue-800">Email</Label>
+              <Label htmlFor="email" className="text-[#0F172A]">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -124,7 +124,7 @@ export default function LoginPage() {
             
             <Button 
               type="submit" 
-              className="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-2 px-4" 
+              className="w-full bg-yellow-400 hover:bg-yellow-500 text-[#0F172A] font-bold py-2 px-4" 
               disabled={isLoading}
             >
               {isLoading ? "Logging in..." : "Access My Account"}
@@ -133,9 +133,9 @@ export default function LoginPage() {
         </CardContent>
         
         <CardFooter className="flex justify-center border-t border-blue-100 pt-4">
-          <p className="text-sm text-blue-700">
+          <p className="text-sm text-[#0F172A]">
             Dont have an account?{" "}
-            <Link href="/signup" className="text-blue-600 font-bold hover:text-yellow-600 hover:underline">
+            <Link href="/signup" className="text-[#facc15] font-bold hover:text-yellow-600 hover:underline">
               Sign up
             </Link>
           </p>
