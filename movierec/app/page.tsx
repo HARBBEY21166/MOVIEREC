@@ -75,10 +75,10 @@ export default function LoginPage() {
         ))}
       </div>
       
-      <Card className="w-full max-w-md border-4 bg-[#facc15] shadow-2xl bg-white">
-        <div className="bg-blue-800 py-6 px-4 text-center rounded-t-sm">
+      <Card className="w-full max-w-md border-4 border-[#facc15] shadow-2xl bg-white">
+        <div className="bg-[#0F172A] py-6 px-4 text-center rounded-t-sm">
           <div className="w-16 h-16 mx-auto mb-2 bg-yellow-400 rounded-full flex items-center justify-center">
-            <Film size={32} className="text-blue-800" />
+            <Film size={32} className="text-[#facc15]" />
           </div>
           <h1 className="text-3xl font-black text-[#facc15] tracking-wide uppercase">MovieRec</h1>
           <p className="text-yellow-200 text-sm font-medium mt-1">Your personal movie recommendation system</p>
@@ -106,19 +106,19 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="border-blue-300 focus:border-blue-500 focus:ring-blue-500"
+                className="border-gray-700 focus:border-[#facc15] focus:ring-[#facc15]"
               />
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-blue-800">Password</Label>
+              <Label htmlFor="password" className="text-[#0F172A]">Password</Label>
               <Input
                 id="password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="border-blue-300 focus:border-blue-500 focus:ring-blue-500"
+                className="border-gray-700 focus:border-[#facc15] focus:ring-[#facc15]"
               />
             </div>
             
@@ -132,10 +132,10 @@ export default function LoginPage() {
           </form>
         </CardContent>
         
-        <CardFooter className="flex justify-center border-t border-blue-100 pt-4">
+        <CardFooter className="flex justify-center border-t border-gray-700 pt-4">
           <p className="text-sm text-[#0F172A]">
             Dont have an account?{" "}
-            <Link href="/signup" className="text-[#facc15] font-bold hover:text-yellow-600 hover:underline">
+            <Link href="/signup" className="text-[#0F172A] font-bold hover:text-yellow-600 hover:underline">
               Sign up
             </Link>
           </p>
