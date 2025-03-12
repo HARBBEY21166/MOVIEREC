@@ -70,7 +70,7 @@ export default function LoginPage() {
               top: `${Math.random() * 100}%`,
             }}
           >
-            <Ticket size={64} className="text-[#facc15]" />
+            <Ticket size={64} className="text-[#0F172A]" />
           </div>
         ))}
       </div>
