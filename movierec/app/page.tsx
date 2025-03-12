@@ -70,7 +70,7 @@ export default function LoginPage() {
               top: `${Math.random() * 100}%`,
             }}
           >
-            <Ticket size={64} className="text-[#0F172A]" />
+            <Ticket size={64} className="text-[#facc15]" />
           </div>
         ))}
       </div>
@@ -78,7 +78,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md border-4 border-[#facc15] shadow-2xl bg-white">
         <div className="bg-[#0F172A] py-6 px-4 text-center rounded-t-sm">
           <div className="w-16 h-16 mx-auto mb-2 bg-yellow-400 rounded-full flex items-center justify-center">
-            <Film size={32} className="text-[#facc15]" />
+            <Film size={32} className="text-[#0F172A]" />
           </div>
           <h1 className="text-3xl font-black text-[#facc15] tracking-wide uppercase">MovieRec</h1>
           <p className="text-yellow-200 text-sm font-medium mt-1">Your personal movie recommendation system</p>
